@@ -1,0 +1,12 @@
+digraph "01-simple-boolean" {
+  rankdir = LR;
+  node [
+    shape = circle
+  ];
+
+  on [ label = "On" ];
+  off [ label = "Off" ];
+
+  on -> off [ label = "Click" ];
+  off -> on [ label = "Click" ];
+}

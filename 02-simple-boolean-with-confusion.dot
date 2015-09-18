@@ -1,0 +1,15 @@
+digraph "01-simple-boolean" {
+  rankdir = LR;
+  node [
+    shape = circle
+  ];
+
+  on [ label = "On" ];
+  off [ label = "Off" ];
+
+  on -> off [ label = "Click\np = 0.9" color = grey10 ];
+  on -> on [ label = "Click\np = 0.1" color = grey90 ];
+
+  off -> on [ label = "Click\np = 0.9" color = grey10];
+  off -> off [ label = "Click\np = 0.1" color = grey90 ];
+}
