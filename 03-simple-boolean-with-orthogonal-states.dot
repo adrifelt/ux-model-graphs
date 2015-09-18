@@ -1,0 +1,23 @@
+digraph "02-simple-boolean-with-confusion" {
+  rankdir = LR;
+  node [
+    shape = circle
+  ];
+
+  off [ label = "encrypted = false,\nbutton raised" ];
+  on [ label = "encrypted = true,\nbutton pressed" ];
+
+  off_confused [ label = "encrypted = true,\nbutton raised", shape = square ];
+  on_confused [ label = "encrypted = false,\nbutton pressed", shape = square ];
+  on_overconfident [
+    label = "encrypted = true,\nencrypted means authenticated,\nbutton pressed",
+    shape = square
+  ];
+
+  on -> on_confused [ label = "click\np = 0.1", color = grey90 ];
+  on -> on_overconfident [ label = "click\np = 0.2", color = grey80 ];
+  on -> off [ label = "click\np = 0.7", color = grey30 ];
+
+  off -> off_confused [ label = "click\np = 0.1", color = grey90 ];
+  off -> on [ label = "click\np = 0.9", color = grey10];
+}
