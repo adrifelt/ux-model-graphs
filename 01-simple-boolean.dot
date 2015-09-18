@@ -4,9 +4,9 @@ digraph "01-simple-boolean" {
     shape = circle
   ];
 
-  on [ label = "On" ];
-  off [ label = "Off" ];
+  off [ label = "encrypted = false,\nbutton raised" ];
+  on [ label = "encrypted = true,\nbutton pressed" ];
 
-  on -> off [ label = "Click" ];
-  off -> on [ label = "Click" ];
+  off -> on [ label = "click" ];
+  on -> off [ label = "click" ];
 }
