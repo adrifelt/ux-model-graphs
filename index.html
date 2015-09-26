@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<title>Modeling Machine And Human States</title>
+
+<title>Modeling Machine And Human States To Enable And Evaluate Secure
+Usability</title>
 
 <style>
 body {
@@ -9,7 +11,8 @@ body {
 }
 </style>
 
-<h1>Modeling Machine And Human States</h1>
+<h1>Modeling Machine And Human States To Enable And Evaluate Secure
+Usability</h1>
 
 <p>Chris Palmer, <a
 href="mailto:chris@noncombatant.org">chris@noncombatant.org</a></p>
@@ -19,6 +22,24 @@ href="mailto:chris@noncombatant.org">chris@noncombatant.org</a></p>
 <p>TODO</p>
 
 <h2>Introduction</h2>
+
+<p>We can describe or model much of a software program’s behavior as transitions
+from 1 state to another. The same is true of protocols, ceremonies, and
+computing hardware. In this paper, the generic term <em>machine</em> refers to
+any software, hardware, protocol, or ceremony.</p>
+
+<p>Good user experience (UX) engineering should help people to develop
+accurate-enough mental models of the machine’s state. (See for example <a
+href="http://www.nngroup.com/articles/mental-models/">“Mental Models” by Jakob
+Nielsen</a>. TODO: Find better/more citations.) In order to do that, we need to
+develop a model of the state transitions the <em>human</em> makes as well as
+those the machine makes. We must also model the probability that the human’s
+model accurately tracks that of the machine, where necessary. (It is rarely
+necessary or possible for the human to track the machine’s state exactly.)</p>
+
+<p>When the human cannot track the machine’s state, poor usability results. But,
+some state tracking mismatches are also security vulnerabilities. TODO: Provide
+an example; maybe hint at examples later in the paper.</p>
 
 <p>TODO</p>
 
@@ -31,7 +52,7 @@ Markov models</a></p>
 <p><a href="https://eprint.iacr.org/2007/399.pdf"><em>Ceremony Design And
 Analysis</em></a> by Carl Ellison</p>
 
-<p>TODO</p>
+<p>TODO. Adrienne sent more good ones.</p>
 
 <h2>Hello, World</h2>
 
@@ -113,8 +134,50 @@ is like a bonus. TODO</p>
 
 <h3>The Secure Attention Sequence</h3>
 
-<p>Requirements for SAS: must all point to the same vertex; every other vertex
-must have a SAS edge</p>
+<p>A secure attention sequence is any gesture which</p>
+
+<ul>
+
+<li>the underlying platform interprets without passing the gesture through to
+potentially untrustworthy, lower-privilege code</li>
+
+<li>always causes the platform to run only code from its trusted computing
+base</li>
+
+<li>the trustworthy code always shows trustworthy (unforgeable,
+un-eavesdroppable) UI</li>
+
+</ul>
+
+<p>Despite the name ‘sequence’, the gesture may be a simple one like pressing
+<em>Escape</em> on the keyboard or the <em>Home</em> button on an iOS device.
+The term ‘sequence’ may be a historical quirk: one of the first SASs was the
+Windows and OS/2 SAS, the complex keyboard gesture
+<em>Control-Alt-Delete</em>.</p>
+
+<p>Possible example SASs:</p>
+
+<ul>
+
+<li>Control-Alt-Delete on Windows (the GINA/modern equivalent TODO runs in its
+own desktop and as its own principal)</li>
+
+<li>The Home button on iOS devices</li>
+
+<li>Anything on Chrome OS?</li>
+
+</ul>
+
+<p>Requirements for SAS:</p>
+
+<ul>
+
+<li>all edges must point to the same vertex</li>
+
+<li>every other vertex (or at least every machine state (circle) vertex) must
+have a SAS edge</li>
+
+</ul>
 
 <h2>Example: Full Screen Mode</h2>
 
@@ -127,3 +190,13 @@ must have a SAS edge</p>
 <h2>Acknowledgements</h2>
 
 <p>I’d like to thank the Academy, and Jesus.</p>
+
+<!--
+
+TODO and writing style guidelines:
+
+* Avoid saying ‘user’
+* Avoid the passive voice
+* Prefer verb phrases to gerunds
+
+-->
