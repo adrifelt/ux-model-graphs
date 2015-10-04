@@ -76,7 +76,7 @@ that the program use only encrypted network communications.</p>
 
 <div>
 <img src="01-simple-boolean.png"/><br/>
-<em>Figure 1: A simple Boolean option</em>
+<em>Figure 1: A simple Boolean option.</em>
 </div>
 
 <p>To change states, the person performs a <em>gesture</em> (in this case,
@@ -116,27 +116,26 @@ these ways. To start, we may assume that it is highly probable that the person�
 mental model can track the machine’s state model; assume that the probability of
 correct tracking is 0.9. Further assume that the probability of incorrect
 tracking is 0.1. In Figure 2, square vertices indicate incorrect human mental
-states, and the edges are marked with their probabilities. Additionally, the
-edges are shown in light gray for low probability, and in dark gray for high
+states, and the arcs are marked with their probabilities. Additionally, the arcs
+are shown in light gray for low probability, and in dark gray for high
 probability.</p>
 
 <div>
 <img src="02-simple-boolean-with-confusion.png"/><br/>
-<em>Figure 2: A simple Boolean option, allowing for human confusion</em>
+<em>Figure 2: A simple Boolean option, allowing for human confusion.</em>
 </div>
 
-<blockquote>TODO: Problem with Figures 2 and 3: the labels “click 1” and “click
-2”, which I intend to link the 2 divergent outcomes from the same click, is kind
-of a hack. Currently using subgraphs in the dot files to group the clicks. Not
-sure how well it will work.</blockquote>
-
 <p>Sometimes people can be confused about what states are even possible in the
-machine’s state model. In this example, TODO:</p>
+machine’s state model. In this example, there are 2 different types of
+confusion: whether or not the button is pressed and encryption is turned on; and
+what the security guarantee of the encryption really is. (People often
+mistakenly believe that encryption alone also provides authentication of the
+peer or the tamper-evidence of the data they transmit over the connection.)</p>
 
 <div>
 <img src="03-simple-boolean-with-orthogonal-states.png"/><br/>
 <em>Figure 3: A simple Boolean option, allowing for human confusion as to what
-states are even possible for the machine</em>
+states are even possible for the machine.</em>
 </div>
 
 <p>TODO: the situation when the human’s model of the machine state model is
@@ -145,12 +144,16 @@ do</p>
 
 <h2>Basic Constraints</h2>
 
-<p>All edges out of a vertex must add up to p = 1.0. Except for the SAS, which
-is like a bonus. TODO</p>
+<p>All arcs out of a vertex have a corresponding probability that the person’s
+mental state will change to the indicated state, and the probabilities of all
+arcs leading out from a state must add up to exactly <var>p</var> = 1.0.</p>
+
+<p>There is 1 exception to this rule: the <em>secure attention
+sequence</em>.</p>
 
 <h3>The Secure Attention Sequence</h3>
 
-<p>A secure attention sequence is any gesture which</p>
+<p>A secure attention sequence (SAS) is any gesture which</p>
 
 <ul>
 
@@ -184,16 +187,26 @@ own desktop and as its own principal)</li>
 
 </ul>
 
-<p>Requirements for SAS:</p>
+<p>Requirements for a SAS:</p>
 
 <ul>
 
-<li>all edges must point to the same vertex</li>
+<li>all arcs must point to the same vertex, the <em>SAS target</em></li>
 
-<li>every other vertex (or at least every machine state (circle) vertex) must
-have a SAS edge</li>
+<li>every vertex other than the SAS target must have exactly 1 arc, with <var>p</var> =
+1.0, leading to the SAS target</li>
 
 </ul>
+
+<p>In these graphs, we will color the arcs pointing to the SAS target in red.
+To keep the graphs clean, we will give them no other marking; you may assume
+that the properties of a SAS hold if the graph has a SAS at all.</p>
+
+<div>
+<img src="04-simple-boolean-with-reset.png"/><br/>
+<em>Figure 4: A simple Boolean option, with a secure attention sequence to reset
+to the default state.</em>
+</div>
 
 <h2>Example: Full Screen Mode</h2>
 
