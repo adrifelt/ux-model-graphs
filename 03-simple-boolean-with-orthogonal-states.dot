@@ -17,10 +17,10 @@ digraph "02-simple-boolean-with-confusion" {
   subgraph { rank = same; on_confused; on_overconfident; off; }
   subgraph { rank = same; off_confused; on; }
 
-  on -> on_confused [ label = "click 1\np = 0.1", color = grey90 ];
-  on -> on_overconfident [ label = "click 1\np = 0.2", color = grey80 ];
-  on -> off [ label = "click 1\np = 0.7", color = grey30 ];
+  off:e -> off_confused [ label = "click 2\np = 0.1", color = grey90, weight = 1 ];
+  off:e -> on [ label = "click 2\np = 0.9", color = grey10, weight = 9 ];
 
-  off -> off_confused [ label = "click 2\np = 0.1", color = grey90 ];
-  off -> on [ label = "click 2\np = 0.9", color = grey10];
+  on:w -> on_confused [ label = "click 1\np = 0.1", color = grey90, weight = 1 ];
+  on:w -> on_overconfident [ label = "click 1\np = 0.2", color = grey80, weight = 2 ];
+  on:w -> off [ label = "click 1\np = 0.7", color = grey30, weight = 7 ];
 }

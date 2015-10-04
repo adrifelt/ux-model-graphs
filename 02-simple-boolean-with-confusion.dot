@@ -7,15 +7,15 @@ digraph "02-simple-boolean-with-confusion" {
   off [ label = "encrypted = false,\nbutton raised" ];
   on [ label = "encrypted = true,\nbutton pressed" ];
 
-  off_confused [ label = "encrypted = true,\nbutton raised", shape = square ];
-  on_confused [ label = "encrypted = false,\nbutton pressed", shape = square ];
-
   subgraph { rank = same; on_confused; off; };
   subgraph { rank = same; off_confused; on; };
 
-  on -> on_confused [ label = "click 1\np = 0.1", color = grey90 ];
-  on -> off [ label = "click 1\np = 0.9", color = grey10 ];
+  off_confused [ label = "encrypted = true,\nbutton raised", shape = square ];
+  on_confused [ label = "encrypted = false,\nbutton pressed", shape = square ];
 
-  off -> off_confused [ label = "click 2\np = 0.1", color = grey90 ];
-  off -> on [ label = "click 2\np = 0.9", color = grey10];
+  off:e -> off_confused [ label = "click 2\np = 0.1", color = grey90, weight = 1 ];
+  off:e -> on [ label = "click 2\np = 0.9", color = grey10, weight = 9 ];
+
+  on:w -> on_confused [ label = "click 1\np = 0.1", color = grey90, weight = 1 ];
+  on:w -> off [ label = "click 1\np = 0.9", color = grey10, weight = 9 ];
 }
