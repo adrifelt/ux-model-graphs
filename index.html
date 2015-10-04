@@ -193,6 +193,8 @@ own desktop and as its own principal)</li>
 
 <li>all arcs must point to the same vertex, the <em>SAS target</em></li>
 
+<li>the SAS target must not be an incorrect (square) state</li>
+
 <li>every vertex other than the SAS target must have exactly 1 arc, with <var>p</var> =
 1.0, leading to the SAS target</li>
 
@@ -205,6 +207,15 @@ that the properties of a SAS hold if the graph has a SAS at all.</p>
 <div>
 <img src="04-simple-boolean-with-reset.png"/><br/>
 <em>Figure 4: A simple Boolean option, with a secure attention sequence to reset
+to the default state.</em>
+</div>
+
+<p>To keep the graphs even more clean, we may color the SAS target red, and omit
+the arcs pointing to it.</p>
+
+<div>
+<img src="05-simple-boolean-with-reset-clean.png"/><br/>
+<em>Figure 5: A simple Boolean option, with a secure attention sequence to reset
 to the default state.</em>
 </div>
 
