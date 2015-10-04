@@ -24,9 +24,9 @@ href="mailto:chris@noncombatant.org">chris@noncombatant.org</a></p>
 <h2>Introduction</h2>
 
 <p>We can describe or model much of a software program’s behavior as transitions
-from 1 state to another. The same is true of protocols, ceremonies, and
-computing hardware. In this paper, the generic term <em>machine</em> refers to
-any software, hardware, protocol, or ceremony.</p>
+from 1 state to another. The same is true of the behavior of computing hardware,
+as well as protocols and ceremonies. In this paper, the generic term
+<em>machine</em> refers to any software, hardware, protocol, or ceremony.</p>
 
 <p>Good user experience (UX) engineering should help people to develop
 accurate-enough mental models of the machine’s state. (See for example <a
@@ -38,8 +38,18 @@ model accurately tracks that of the machine, where necessary. (It is rarely
 necessary or possible for the human to track the machine’s state exactly.)</p>
 
 <p>When the human cannot track the machine’s state, poor usability results. But,
-some state tracking mismatches are also security vulnerabilities. TODO: Provide
-an example; maybe hint at examples later in the paper.</p>
+some state tracking mismatches are also security vulnerabilities. For example,
+if the human believes that a communications application is using cryptography to
+secure the person’s messages to and from their friend, but in fact the
+application is <em>not</em> doing that, the person may engage in unnecessarily
+risky behavior. For another example, if the human believes that the computer is
+showing them the login screen for their bank, but in fact the login screen is
+controlled by an impostor, the person is likely to lose control of their bank
+account.</p>
+
+<p>It can also be the case that the person underestimates the security level of
+the machine’s state, and hence is over-cautious. In this case, the person may
+not receive the full utility or value of the application.</p>
 
 <p>TODO</p>
 
@@ -69,10 +79,11 @@ that the program use only encrypted network communications.</p>
 <p>To change states, the person performs a <em>gesture</em> (in this case,
 clicks the button). With each click, the machine enters the 1 other possible
 state; there are no other possible states. The machine changes state with
-perfect certainty; there are no bugs in the <var>onclick</var> event handler. We
-may presume that the person perceives the state change, both because they had to
-perform an action to make it happen, and because the visual representation of
-the button changes from <em>raised</em> to <em>pressed</em>.</p>
+perfect certainty; there are no bugs in the hypothetical <var>onclick</var>
+event handler. We may presume that the person perceives the state change, both
+because they had to perform a gesture to make it happen, and because the visual
+representation of the button changes from <em>raised</em> to
+<em>pressed</em>.</p>
 
 <p>UX designers and engineers know from painful experience that people do not,
 in fact, always have perfect perception of the changes that happen in the
@@ -82,7 +93,9 @@ of the button. For examples of why this might happen, consider:</p>
 
 <ul>
 
-<li>this might be the person’s first time using a computer</li>
+<li>this might be the person’s first time using a computer, and they might not
+understand the significance of the click gesture and the visual representation
+of the button</li>
 
 <li>the graphic design of the UX elements may have changed since the last
 software update, and the person has not yet learned the new appearance for
@@ -99,9 +112,9 @@ otherwise handle the event in real time</li>
 these ways. To start, we may assume that it is highly probable that the person’s
 mental model can track the machine’s state model; assume that the probability of
 correct tracking is 0.9. Further assume that the probability of incorrect
-tracking is 0.1. In Figure 2, incorrect states are identified by square
-vertices, and the edges are marked with their probabilities. Additionally, the
-edges are shown in light gray for low probability, and in darker gray for high
+tracking is 0.1. In Figure 2, square vertices indicate incorrect human mental
+states, and the edges are marked with their probabilities. Additionally, the
+edges are shown in light gray for low probability, and in dark gray for high
 probability.</p>
 
 <div>
