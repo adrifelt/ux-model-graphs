@@ -1,12 +1,27 @@
 digraph "01-simple-boolean" {
+  splines = polyline;
   rankdir = LR;
   node [
     shape = circle
+    fontname = "Roboto"
+    fontsize = 11
+  ];
+  edge [
+    fontname = "Roboto"
+    fontsize = 11
   ];
 
-  off [ label = "encrypted = false,\nbutton raised" ];
-  on [ label = "encrypted = true,\nbutton pressed" ];
+  off [
+    label = "encrypted = false,\nbutton raised"
+  ];
+  on [
+    label = "encrypted = true,\nbutton pressed"
+  ];
 
-  off -> on [ label = "click" ];
-  on -> off [ label = "click" ];
+  off -> on [
+    label = "click"
+  ];
+  on -> off [
+    label = "click"
+  ];
 }
