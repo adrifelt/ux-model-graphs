@@ -1,4 +1,4 @@
-digraph "02-simple-boolean-with-confusion" {
+digraph "03-simple-boolean-with-orthogonal-states" {
   rankdir = LR;
   node [
     shape = circle
