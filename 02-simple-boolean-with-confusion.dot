@@ -5,6 +5,8 @@ digraph "02-simple-boolean-with-confusion" {
     shape = circle
     fontname = "Roboto"
     fontsize = 11
+    width = 1.35
+    margin = 0
   ];
   edge [
     fontname = "Roboto"

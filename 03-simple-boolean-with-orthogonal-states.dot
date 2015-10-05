@@ -5,6 +5,8 @@ digraph "03-simple-boolean-with-orthogonal-states" {
     shape = circle
     fontname = "Roboto"
     fontsize = 11
+    width = 1.35
+    margin = 0
   ];
   edge [
     fontname = "Roboto"
@@ -27,7 +29,7 @@ digraph "03-simple-boolean-with-orthogonal-states" {
     shape = square
   ];
   on_overconfident [
-    label = "encrypted = true,\nauthenticated = true,\nbutton pressed"
+    label = "encrypted = true,\nauth’d = true,\nbutton pressed"
     shape = square
   ];
 
