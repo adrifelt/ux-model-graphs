@@ -35,26 +35,43 @@ as well as protocols and ceremonies. In this paper, the generic term
 accurate-enough mental models of the machine’s state. (See for example <a
 href="http://www.nngroup.com/articles/mental-models/">“Mental Models” by Jakob
 Nielsen</a>. TODO: Find better/more citations.) In order to do that, we need to
-develop a model of the state transitions the <em>human</em> makes as well as
-those the machine makes. We must also model the probability that the human’s
-model accurately tracks that of the machine, where necessary. (It is rarely
-necessary or possible for the human to track the machine’s state exactly.)</p>
+develop a model of the state transitions the human makes as well as those the
+machine makes. We must also estimate the probability that the human’s model
+accurately tracks that of the machine, where necessary. (It is rarely necessary
+or possible for the human to track the machine’s state exactly.)</p>
 
-<p>When the human cannot track the machine’s state, poor usability results. But,
-some state tracking mismatches are also security vulnerabilities. For example,
-if the human believes that a communications application is using cryptography to
-secure the person’s messages to and from their friend, but in fact the
-application is <em>not</em> doing that, the person may engage in unnecessarily
-risky behavior. For another example, if the human believes that the computer is
-showing them the login screen for their bank, but in fact the login screen is
-controlled by an impostor, the person is likely to lose control of their bank
-account.</p>
+<p>When the human cannot track the machine’s state accurately enough, poor
+usability results. The human has a hard time understanding what the machine is
+doing, and loses confidence that they can control the machine and complete their
+task.</p>
+
+<p>Some state tracking mismatches are also security vulnerabilities. For
+example, if the human believes that a communications application is using
+cryptography to secure the person’s messages to and from their friend, but in
+fact the application is <em>not</em> doing that, the person may engage in
+unnecessarily risky behavior, may lose control of private information, may lose
+control of payment instruments, and so on. For another example, if the human
+believes that the computer is showing them the login screen for their bank, but
+in fact the login screen is controlled by an impostor, the person is likely to
+lose control of their bank account.</p>
 
 <p>It can also be the case that the person underestimates the security level of
 the machine’s state, and hence is over-cautious. In this case, the person may
 not receive the full utility or value of the application.</p>
 
-<p>TODO</p>
+<p>Therefore, for good usability as well as good security, UX engineers must be
+able to predict what states a mental model the human will traverse as they use
+the system. Engineers must create affordances, select iconography and labels,
+and use gestures that help people develop accurate-enough mental models, and
+which are more likely than not to guide the person through the states of their
+mental model that accurately map to machine states.</p>
+
+<p>Approaching UX engineering from this perspective allows us to dissolve the
+false dichotomy between usability (sometimes grossly mischaracterized as mere
+‘convenience’) and security. In fact, in this article I hope to show that the
+interfaces that are the most learnable, discoverable, accessible, and effective
+are also the ones that have the fewest human-machine state mismatches — and
+hence the fewest human-machine state mismatches that lead to vulnerability.</p>
 
 <h2>Prior Work</h2>
 
