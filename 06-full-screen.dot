@@ -19,13 +19,13 @@ digraph {
     shape = doublecircle
   ];
   fs_notif [
-    label = "FS w/notification"
+    label = "FS w/\nnotification"
   ];
   fs_timer [
     label = "FS w/timer\nrunning"
   ];
-  fs_alarmed [
-    label = "FS w/timer\nalarmed"
+  fs_fired [
+    label = "FS w/timer\nfired"
   ];
 
   nfs:e -> fs_notif [
@@ -46,7 +46,7 @@ digraph {
     color = grey80
   ];
 
-  fs_timer:e -> fs_alarmed [
+  fs_timer:e -> fs_fired [
     label = "M seconds\np = 0.2"
     color = grey80
   ];
@@ -55,7 +55,7 @@ digraph {
     color = grey20
   ];
 
-  fs_alarmed:w -> fs_notif [
+  fs_fired:w -> fs_notif [
     label = "gesture\np = 1.0"
     color = black
   ];
