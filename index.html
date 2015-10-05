@@ -219,7 +219,9 @@ own desktop and as its own principal)</li>
 
 <p>In these graphs, we will color the arcs pointing to the SAS target in red.
 To keep the graphs clean, we will give them no other marking; you may assume
-that the properties of a SAS hold if the graph has a SAS at all.</p>
+that the properties of a SAS hold if the graph has a SAS at all, that the
+SAS gesture is unique and global to the machine, and that the probability that
+the human tracks it is 1.0..</p>
 
 <div>
 <img src="04-simple-boolean-with-reset.png"/><br/>
@@ -227,14 +229,18 @@ that the properties of a SAS hold if the graph has a SAS at all.</p>
 to the default state.</em>
 </div>
 
-<p>To keep the graphs even more clean, we may color the SAS target red, and omit
-the arcs pointing to it.</p>
+<p>However, even that is messy. To keep the graphs even more clean, we may color
+the SAS target red, use a double-circle for its node, and omit the arcs pointing
+to it.</p>
 
 <div>
 <img src="05-simple-boolean-with-reset-clean.png"/><br/>
 <em>Figure 5: A simple Boolean option, with a secure attention sequence to reset
 to the default state.</em>
 </div>
+
+<p>If a graph has no SAS target node, then it is a model of a machine that has
+no SAS.</p>
 
 <h2>Example: Full Screen Mode</h2>
 

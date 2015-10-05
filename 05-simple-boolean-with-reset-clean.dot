@@ -16,6 +16,7 @@ digraph "04-simple-boolean-with-reset" {
   off [
     label = "encrypted = false,\nbutton raised"
     color = red
+    shape = doublecircle
   ];
   on [
     label = "encrypted = true,\nbutton pressed"
