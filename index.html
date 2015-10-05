@@ -243,11 +243,70 @@ no SAS.</p>
 
 <h2>Example: Full Screen Mode</h2>
 
-<p>TODO: Explain this beast.</p>
+<p>Consider a more complex model of machine and human state: A full-screen mode
+for a web browser. Various classes of web application (e.g. games, slideshow and
+other document viewers, demos, signage) benefit greatly from the ability to use
+the entire screen, obscuring not only the native chrome of the browser but that
+of the underlying operating system. Obviously, this is potentially damaging to
+the person’s mental model of what the machine is doing, because they lose the
+ability to read or interact with the native controls — many of which are
+security-critical. (Consider, for example, the browser’s Location Bar, or the
+operating system’s privilege escalation dialog.)</p>
+
+<p>Thus, if the browser supports full screen mode, a malicious web application
+author has a marginally improved ability to spoof the UX and fool the person
+using it. For example, they might create a screen that obscures native chrome
+that lets the person know that they are viewing a particular origin, and
+replacing it with impostor chrome that tricks the person into thinking they are
+visiting another origin. The person might then be induced to provide the
+impostor origin with their credentials for the true origin.</p>
+
+<p>Feross Aboukhadijeh has developed <a
+href="http://feross.org/html5-fullscreen-api-attack/">an example of such a
+spoofing attack</a>. The attack goes to some effort to mimic the chrome of the
+browser and even the underlying operating system, and seeks to spoof the web
+site of a large US bank. Because Aboukhadijeh is not really seeking to trick
+people, the demo warns the person that they were tricked if they try to interact
+with the impostor page.
+
+<p>Without going to the effort of using full screen mode to create an elaborate
+spoof, such an attacker has a good probability of success due to the reality
+that people check the browser’s origin indicators with <var>p</var> well below
+1.0 — and then, the probability that the person fully understands what the
+indicators mean is also below 1.0. TODO: Discuss the Feross screenshots vs. a
+simpler spoof on noncombatant.org.</p>
+
+<!-- feross-01.png  feross-02.png  feross-03.png  feross-04.png -->
 
 <div>
-<img src="06-full-screen.png"/><br/>
-<em>Figure 6: A full-screen mode that attempts to protect against UX
+<img src="feross-01.png"/><br/>
+<em>Figure 6a: A spoof of Bank Of America using full-screen mode.</em>
+</div>
+
+<div>
+<img src="feross-02.png"/><br/>
+<em>Figure 6b: A spoof of Bank Of America using full-screen mode.</em>
+</div>
+
+<div>
+<img src="feross-03.png"/><br/>
+<em>Figure 6c: A spoof of Bank Of America using full-screen mode.</em>
+</div>
+
+<div>
+<img src="feross-04.png"/><br/>
+<em>Figure 6d: A spoof of Bank Of America using full-screen mode.</em>
+</div>
+
+<p>Even so, we would like to help people model the full screen state of the
+machine, while at the same time not degrading the functionality of a benign full
+screen application. TODO: Reasons... frustration with decorations messing with
+games; complaints from people who get stuck in FS; et c. TODO: Explain this
+beast:</p>
+
+<div>
+<img src="07-full-screen.png"/><br/>
+<em>Figure 7: A full-screen mode that attempts to protect against UX
 spoofing.</em>
 </div>
 
