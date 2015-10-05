@@ -267,36 +267,64 @@ spoofing attack</a>. The attack goes to some effort to mimic the chrome of the
 browser and even the underlying operating system, and seeks to spoof the web
 site of a large US bank. Because Aboukhadijeh is not really seeking to trick
 people, the demo warns the person that they were tricked if they try to interact
-with the impostor page.
+with the impostor page.</p>
+
+<p>Here is how the spoof demo looks in Chrome 46. When the person clicks on the
+link on Aboukhadijeh’s page, a new window opens and takes up the full screen,
+showing a fake Bank Of America page. Chrome 46 shows an overlay over the window,
+near the top, telling the person that “feross.org is now full screen” and that
+they can <em>Allow</em> this (dismissing the overlay) or <em>Exit full
+screen</em> (closing the full screen window).</p>
+
+<div>
+<img src="feross-01.png"/><br/>
+<em>Figure 6a: A spoof of Bank Of America using full-screen mode. The
+Allow/Exit overlay is showing.</em>
+</div>
+
+<p>Assuming the person chooses to Allow feross.org to take the whole screen
+(something that only TODO% of people do; TODO talk about the numbers), Chrome
+shows a new overlay, with just a notification and without buttons:</p>
+
+<div>
+<img src="feross-02.png"/><br/>
+<em>Figure 6b: A spoof of Bank Of America using full-screen mode. The
+notification overlay is showing.</em>
+</div>
+
+<p>After a few seconds, this new overlay disappears, and the application is now
+running unfettered in full screen mode:</p>
+
+<div>
+<img src="feross-03.png"/><br/>
+<em>Figure 6c: A spoof of Bank Of America using full-screen mode. No overlays
+are showing; the application has full control of all pixels on the screen.</em>
+</div>
+
+<p>However, if the person touches the mouse to the top of the screen, the
+button-less overlay reappears, re-asserting to the person that they are seeing
+feross.org in full screen mode.</p>
+
+<p>Here is what my screen looks like when I browse to the true Bank Of America
+site with my browser window maximized. The true Bank Of America site does not
+use the full screen feature, so my true browser chrome and my true operating
+system chrome is still visible:</p>
+
+<div>
+<img src="feross-04.png"/><br/>
+<em>Figure 6d: The real Bank Of America site, not in full screen mode but
+maximized, with the true native browser chrome and Ubuntu window management
+chrome.</em>
+</div>
 
 <p>Without going to the effort of using full screen mode to create an elaborate
 spoof, such an attacker has a good probability of success due to the reality
 that people check the browser’s origin indicators with <var>p</var> well below
 1.0 — and then, the probability that the person fully understands what the
-indicators mean is also below 1.0. TODO: Discuss the Feross screenshots vs. a
-simpler spoof on noncombatant.org.</p>
+indicators mean is also below 1.0.</p>
 
-<!-- feross-01.png  feross-02.png  feross-03.png  feross-04.png -->
-
-<div>
-<img src="feross-01.png"/><br/>
-<em>Figure 6a: A spoof of Bank Of America using full-screen mode.</em>
-</div>
-
-<div>
-<img src="feross-02.png"/><br/>
-<em>Figure 6b: A spoof of Bank Of America using full-screen mode.</em>
-</div>
-
-<div>
-<img src="feross-03.png"/><br/>
-<em>Figure 6c: A spoof of Bank Of America using full-screen mode.</em>
-</div>
-
-<div>
-<img src="feross-04.png"/><br/>
-<em>Figure 6d: A spoof of Bank Of America using full-screen mode.</em>
-</div>
+<p>TODO: Discuss the Feross screenshots vs. a simpler spoof on
+noncombatant.org.</p>
 
 <p>Even so, we would like to help people model the full screen state of the
 machine, while at the same time not degrading the functionality of a benign full
