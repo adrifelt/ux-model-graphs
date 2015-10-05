@@ -13,6 +13,3 @@ pngs: $(pngs)
 
 show: $(pngs)
 	eog $(pngs)
-
-clean:
-	rm *.png
