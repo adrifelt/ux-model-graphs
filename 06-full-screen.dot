@@ -1,0 +1,62 @@
+digraph {
+  splines = polyline;
+  rankdir=LR;
+  node [
+    shape = circle
+    fontname = "Roboto"
+    fontsize = 11
+    width = 1.35
+    margin = 0
+  ];
+  edge [
+    fontname = "Roboto"
+    fontsize = 11
+  ];
+
+  nfs [
+    label = "Not FS"
+    color = red
+    shape = doublecircle
+  ];
+  fs_notif [
+    label = "FS w/notification"
+  ];
+  fs_timer [
+    label = "FS w/timer\nrunning"
+  ];
+  fs_alarmed [
+    label = "FS w/timer\nalarmed"
+  ];
+
+  nfs:e -> fs_notif [
+    label = "gesture\np = 0.9"
+    color = grey10
+  ];
+  nfs:e -> nfs [
+    label = "gesture\np = 0.1"
+    color = grey90
+  ];
+
+  fs_notif:e -> fs_timer [
+    label = "N seconds\np = 0.8"
+    color = grey20
+  ];
+  fs_notif:e -> nfs [
+    label = "p = 0.2"
+    color = grey80
+  ];
+
+  fs_timer:e -> fs_alarmed [
+    label = "M seconds\np = 0.2"
+    color = grey80
+  ];
+  fs_timer:e -> fs_timer [
+    label = "p = 0.8"
+    color = grey20
+  ];
+
+  fs_alarmed:e -> fs_notif [
+    label = "gesture\np = 1.0"
+    color = black
+  ];
+}
