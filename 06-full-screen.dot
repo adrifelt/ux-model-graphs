@@ -37,11 +37,11 @@ digraph {
     color = grey90
   ];
 
-  fs_notif:e -> fs_timer [
+  fs_notif:n -> fs_timer [
     label = "N seconds\np = 0.8"
     color = grey20
   ];
-  fs_notif:e -> nfs [
+  fs_notif:n -> nfs [
     label = "p = 0.2"
     color = grey80
   ];
@@ -55,7 +55,7 @@ digraph {
     color = grey20
   ];
 
-  fs_alarmed:e -> fs_notif [
+  fs_alarmed:w -> fs_notif [
     label = "gesture\np = 1.0"
     color = black
   ];
