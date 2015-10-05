@@ -13,3 +13,7 @@ pngs: $(pngs)
 
 show: $(pngs)
 	xdg-open index.html
+
+commit:
+	git commit -a
+	git push origin master
