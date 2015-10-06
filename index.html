@@ -11,6 +11,10 @@ body {
   font-family: "Roboto", "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   width: 45em;
 }
+
+img {
+  border: 1px solid #666;
+}
 </style>
 
 <h1>Modeling Machine And Human States To Enable And Evaluate Secure
@@ -261,6 +265,8 @@ replacing it with impostor chrome that tricks the person into thinking they are
 visiting another origin. The person might then be induced to provide the
 impostor origin with their credentials for the true origin.</p>
 
+<h3>Spoofing And Phishing With Full Screen Mode</h3>
+
 <p>Feross Aboukhadijeh has developed <a
 href="http://feross.org/html5-fullscreen-api-attack/">an example of such a
 spoofing attack</a>. The attack goes to some effort to mimic the chrome of the
@@ -334,6 +340,8 @@ screen and a spoofed screen:</p>
 not checking or understanding the contents of Chrome’s Omnibox.</em>
 </div>
 
+<h3>Mitigating Risks Of Full Screen Mode</h3>
+
 <p>TODO: Maybe talk about how this is why we don’t allow full screen +
 transparent backgrounds. Maybe also talk about Pointer Lock, which makes it that
 much more important to help people know how to get out of it. Also that is why
@@ -346,6 +354,8 @@ we would like to help people model the full screen state of the machine, while
 at the same time not degrading the functionality of a benign full screen
 application. TODO: Reasons... frustration with decorations messing with games;
 complaints from people who get stuck in FS; et c.
+
+<h3>Improving Full Screen Mode While Maintaining Safety</h3>
 
 <p>The main problem we observed with the full screen behavior in Chrome 46 (as
 seen in Figures 6a – 6c, above) was that the notification was too obtrusive. We
@@ -426,6 +436,15 @@ afterward.</p>
 <p>Confusion state <var>A</var> is potentially vulnerable. To the extent that
 the browser or OS enable high-quality UX redressing/spoofing attacks, people in
 this state may be more vulnerable to such attacks.</p>
+
+<h3>Another Class Of Spoofing Attack</h3>
+
+<p>The Android and iOS applications have minimal window management, effectively
+giving all applications full screen control all the time, except for a small
+amount of OS chrome (e.g. Android’s Notification Bar, or iOS’ Status Bar (TODO:
+Get the official name of the iOS bar)). In principle, applications could take
+good advantage of this simplified window management mechanism to ensure safety:
+TODO</p>
 
 <p>TODO: Discuss this more acute attack scenario:
 http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/</p>
