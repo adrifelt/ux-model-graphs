@@ -337,20 +337,89 @@ not checking or understanding the contents of Chrome’s Omnibox.</em>
 <p>TODO: Maybe talk about how this is why we don’t allow full screen +
 transparent backgrounds. Maybe also talk about Pointer Lock, which makes it that
 much more important to help people know how to get out of it. Also that is why
-we cannot allow web applications to override the SAS.</p>
+we cannot allow web applications to override the SAS. Potential for applications
+to misuse Pointer Lock or have bugs, since you have to manage the mouse
+yourself?</p>
 
-<p>Even so, we would like to help people model the full screen state of the
-machine, while at the same time not degrading the functionality of a benign full
-screen application. TODO: Reasons... frustration with decorations messing with
-games; complaints from people who get stuck in FS; et c.
+<p>Even if full screen mode provides only marginal new opportunities for attack
+we would like to help people model the full screen state of the machine, while
+at the same time not degrading the functionality of a benign full screen
+application. TODO: Reasons... frustration with decorations messing with games;
+complaints from people who get stuck in FS; et c.
 
-<p>TODO: Explain this beast:</p>
+<p>The main problem we observed with the full screen behavior in Chrome 46 (as
+seen in Figures 6a – 6c, above) was that the notification was too obtrusive. We
+heard many complaints from people trying to use games in full screen mode, only
+to have gameplay interrupted or even ruined by the re-appearing notification.
+(For example, the notification might obscure UX elements in the game
+itself.) It seems that a good full screen mode for web applications has at least
+the following requirements:</p>
+
+<ul>
+
+<li>Must give the web application control of the entire screen — browser chrome
+should not use any pixels on the screen around the border of the web
+application</li>
+
+<li>Any notifications or browser chrome must not obscure any UX elements in the
+web application</li>
+
+<li>Any notifications or browser chrome must not swallow any gestures intended
+for UX elements in the web application</li>
+
+<li>It must be possible for people to know whether they are seeing browser and
+OS chrome, or the web application UX</li>
+
+<li>It must be easy for people to get out of full screen mode at any time,
+regardless of the machine’s state or the person’s understanding of what state
+the machine is in</li>
+
+</ul>
+
+<p>To solve the problem given these seemingly contradictory requirements, we
+devised a new UX for full screen mode that behaves as follows:</p>
+
+<ol>
+
+<li>The web application is not in full screen mode, but does have elements in
+its DOM whose event handlers invoke <code>requestFullScreen</code>. Call these
+<em>full screen elements</em>. Only event handlers for <em>affirmative
+gestures</em> can invoke <code>requestFullScreen</code>. Affirmative gestures
+include mouse clicks and keystrokes, but not, for example, mere movement of the
+mouse. (If an event handler for a non-affirmative gesture invokes
+<code>requestFullScreen</code>, the browser throws an exception rather than
+putting the element in full screen mode.)</li>
+
+<li>When the person applies an affirmative gesture to a full screen element, the
+browser puts the element in full screen mode. The browser also shows a
+semi-transparent notification on the screen telling the person that the web
+application is in full screen mode, and that the person can exit full screen
+mode by invoking the SAS (e.g. the <em>Escape</em> key). The semi-transparent
+notification does not swallow gesture events; they pass through to the
+application. The browser also starts a timer, <var>T<sub>1</sub></var>.</li>
+
+<li>After <var>N</var> seconds, <var>T<sub>1</sub></var> expires, and the
+notification disappears. The browser starts a second timer,
+<var>T<sub>2</sub></var>.</li>
+
+<li>After <var>M</var> seconds, <var>T<sub>2</sub></var> expires. In this state,
+the browser will transition to state (2) if (and only if) the user performs a
+gesture (any gesture, not just an affirmative gesture).</li>
+
+</ol>
+
+<p>Figure 7 shows the state transitions:</p>
 
 <div>
 <img src="07-full-screen.png"/><br/>
 <em>Figure 7: A full-screen mode that attempts to protect against UX
 spoofing.</em>
 </div>
+
+<p>TODO: Explain the confusion states, and how only nfs_confused is a potential
+vulnerability. Provide examples of how people might find themselves in
+nfs_confused: didn’t know a gesture was affirmative, looked away during the
+transition for<var>M</var> or more seconds, et c.</p>
 
 <p>TODO: Discuss this more acute attack scenario:
 http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/</p>

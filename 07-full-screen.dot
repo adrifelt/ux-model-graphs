@@ -14,25 +14,29 @@ digraph {
   ];
 
   nfs [
-    label = "Not FS"
+    label = "1. Not FS"
     color = red
     shape = doublecircle
   ];
+  nfs_confused [
+    label = "FS but\nbelieves not FS"
+    shape = square
+  ];
   fs_notif [
-    label = "FS w/\nnotification"
+    label = "2. FS w/\nnotification"
   ];
   fs_timer [
-    label = "FS w/timer\nrunning"
+    label = "3. FS w/timer\nrunning"
   ];
   fs_fired [
-    label = "FS w/timer\nfired"
+    label = "4. FS w/timer\nfired"
   ];
 
   nfs:e -> fs_notif [
     label = "gesture\np = 0.9"
     color = grey10
   ];
-  nfs:e -> nfs [
+  nfs:e -> nfs_confused:s [
     label = "gesture\np = 0.1"
     color = grey90
   ];
