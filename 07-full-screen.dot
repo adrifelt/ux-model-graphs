@@ -19,7 +19,7 @@ digraph {
     shape = doublecircle
   ];
   nfs_confused [
-    label = "FS but\nbelieves not FS"
+    label = "A. FS but\nbelieves not FS"
     shape = square
   ];
   fs_notif [

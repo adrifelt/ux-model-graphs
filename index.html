@@ -403,8 +403,8 @@ notification disappears. The browser starts a second timer,
 <var>T<sub>2</sub></var>.</li>
 
 <li>After <var>M</var> seconds, <var>T<sub>2</sub></var> expires. In this state,
-the browser will transition to state (2) if (and only if) the user performs a
-gesture (any gesture, not just an affirmative gesture).</li>
+the browser will transition to state <var>2</var> if (and only if) the user
+performs a gesture (any gesture, not just an affirmative gesture).</li>
 
 </ol>
 
@@ -416,10 +416,16 @@ gesture (any gesture, not just an affirmative gesture).</li>
 spoofing.</em>
 </div>
 
-<p>TODO: Explain the confusion states, and how only nfs_confused is a potential
-vulnerability. Provide examples of how people might find themselves in
-nfs_confused: didn’t know a gesture was affirmative, looked away during the
-transition for<var>M</var> or more seconds, et c.</p>
+<p>Confusion state <var>A</var> may arise in several ways. For example, perhaps
+the person did not realize that the full screen element was focused and
+receiving affirmative gestures; the person did not realize that their gesture
+(e.g. pressing the Space Bar) counted as an affirmative gesture; or they looked
+away during the transition to full screen and for <var>M</var> or more seconds
+afterward.</p>
+
+<p>Confusion state <var>A</var> is potentially vulnerable. To the extent that
+the browser or OS enable high-quality UX redressing/spoofing attacks, people in
+this state may be more vulnerable to such attacks.</p>
 
 <p>TODO: Discuss this more acute attack scenario:
 http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/</p>
