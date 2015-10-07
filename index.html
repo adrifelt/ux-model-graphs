@@ -408,11 +408,11 @@ mode by invoking the SAS (e.g. the <em>Escape</em> key). The semi-transparent
 notification does not swallow gesture events; they pass through to the
 application. The browser also starts a timer, <var>T<sub>1</sub></var>.</li>
 
-<li>After <var>N</var> seconds, <var>T<sub>1</sub></var> expires, and the
+<li>After <var>N</var> seconds, <var>T<sub>1</sub></var> fires, and the
 notification disappears. The browser starts a second timer,
 <var>T<sub>2</sub></var>.</li>
 
-<li>After <var>M</var> seconds, <var>T<sub>2</sub></var> expires. In this state,
+<li>After <var>M</var> seconds, <var>T<sub>2</sub></var> fires. In this state,
 the browser will transition to state <var>2</var> if (and only if) the user
 performs a gesture (any gesture, not just an affirmative gesture).</li>
 
@@ -439,12 +439,19 @@ this state may be more vulnerable to such attacks.</p>
 
 <h3>Another Class Of Spoofing Attack</h3>
 
-<p>The Android and iOS applications have minimal window management, effectively
+<p>The Android and iOS platforms have minimal window management, effectively
 giving all applications full screen control all the time, except for a small
-amount of OS chrome (e.g. Android’s Notification Bar, or iOS’ Status Bar (TODO:
-Get the official name of the iOS bar)). In principle, applications could take
-good advantage of this simplified window management mechanism to ensure safety:
-TODO</p>
+amount of OS chrome (e.g. <a
+href="http://developer.android.com/guide/topics/ui/notifiers/notifications.html">Android’s
+Notification Area</a>, or <a
+href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/Bars.html#//apple_ref/doc/uid/TP40013174-CH8-SW2">iOS’
+Status Bar</a>). In principle, platforms could take advantage of this simplified
+window management mechanism to ensure safety: since there is (or, should be) no
+situation in which application <var>A</var> would draw its views above (higher
+in Z-order than) a view from application <var>B</var>, the platform could have
+an easier time ensuring that the person’s interaction with the focused
+application <var>B</var> is determined solely by <var>B</var>, without
+disruption from <var>A</var>.</p>
 
 <p>TODO: Discuss this more acute attack scenario:
 http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/</p>
