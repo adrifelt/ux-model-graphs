@@ -1,0 +1,99 @@
+digraph {
+  splines = polyline;
+  rankdir=LR;
+  node [
+    shape = circle
+    fontname = "Roboto"
+    fontsize = 11
+    width = 1.35
+    margin = 0
+  ];
+  edge [
+    fontname = "Roboto"
+    fontsize = 11
+  ];
+
+  malware [
+    label = "1. Malware\nactive"
+    shape = circle
+  ];
+  malware_toast_dm_perm_dialog [
+    label = "2. DM permission\ndialog, malware\ntoast obscuring"
+    shape = circle
+  ];
+  believes_spoof [
+    label = "3. Believes\nspoof"
+    shape = square
+  ];
+  not_believe_spoof [
+    label = "4. Doesn’t\nbelieve\nspoof"
+    shape = square
+  ];
+  deactivate_malware [
+    label = "5. Deactivate\nmalware"
+    shape = doublecircle
+  ];
+  malware_not_empowered [
+    label = "6. Malware not\nempowered"
+    shape = circle
+  ];
+  malware_empowered [
+    label = "7. Malware\nempowered"
+    shape = doublecircle
+  ];
+
+  malware:e -> malware_toast_dm_perm_dialog:w [
+    label = "use malware\np = 0.5"
+    color = grey50
+  ];
+
+  malware:e -> deactivate_malware:n [
+    label = "stop using\nmalware\np = 0.5"
+    color = grey50
+  ];
+
+  malware_toast_dm_perm_dialog:e -> believes_spoof:w [
+    label = "read UX\np = 0.5"
+    color = grey50;
+  ];
+
+  malware_toast_dm_perm_dialog:e -> not_believe_spoof:w [
+    label = "read UX\np = 0.5"
+    color = grey50;
+  ];
+
+  believes_spoof:e -> malware_empowered:w [
+    label = "gesture\np = 0.9"
+    color = grey10
+  ];
+
+  believes_spoof:e -> malware_not_empowered:w [
+    label = "gesture\np = 0.1"
+    color = grey90
+  ];
+
+  not_believe_spoof:e -> malware_empowered:w [
+    label = "gesture\np = 0.1"
+    color = grey90
+  ];
+
+  not_believe_spoof:e -> deactivate_malware:w [
+    label = "gesture\np = 0.1"
+    color = grey90
+  ];
+
+  not_believe_spoof:e -> malware_not_empowered:w [
+    label = "gesture\np = 0.8"
+    color = grey20
+  ];
+
+  malware_not_empowered:s -> malware:s [
+    label = "p = 0.5"
+    color = grey50
+  ];
+
+  malware_not_empowered:s -> deactivate_malware:s [
+    label = "p = 0.5"
+    color = grey50
+  ];
+}
