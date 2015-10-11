@@ -494,16 +494,6 @@ to be an “Update patch installation”. As the victims click through this
 innocuous-looking installation they also unknowingly activate the Device
 Administrator privileges in the hidden underlying window.</blockquote>
 
-<!--
-<blockquote>the app first tricks inexperienced users into granting it device
-administrator privileges. To achieve this, it overlays a bogus patch
-installation window on top of an activation notice. When targets click on the
-continue button, they really grant the malicious app elevated rights that allow
-it to make changes to the Android settings.
-— <a
-href="http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/">Ars Technica</a></blockquote>
--->
-
 <p>It might have been possible to prevent this using the <a
 href="https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/view/SecureView.java"><code>filterTouchesWhenObscured</code>
 attribute of Android Views</a>. The true Device Administrator dialog should use
