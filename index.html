@@ -495,12 +495,16 @@ innocuous-looking installation they also unknowingly activate the Device
 Administrator privileges in the hidden underlying window.</blockquote>
 
 <p>It might have been possible to prevent this using the <a
-href="https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/view/SecureView.java"><code>filterTouchesWhenObscured</code>
-attribute of Android Views</a>. The true Device Administrator dialog should use
-the attribute to ensure that it only receives taps when it is not obscured by
-another applications <code>Toast</code> or any other <code>View</code>.</p>
+href="http://developer.android.com/reference/android/view/View.html"><code>filterTouchesWhenObscured</code>
+attribute of Android <code>View</code>s</a>. The true Device Administrator
+dialog should use the attribute to ensure that it only receives taps when it is
+not obscured by another applications <code>Toast</code> or any other
+<code>View</code>.</p>
 
-<!-- TODO get a canonical link for filterTouchesWhenObscured -->
+<!--
+Example of use:
+https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/view/SecureView.java
+-->
 
 <p>TODO: Talk about how it’s patched</p>
 
