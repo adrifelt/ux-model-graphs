@@ -461,27 +461,63 @@ href="http://developer.android.com/guide/topics/ui/notifiers/notifications.html"
 Notification Area</a>, or <a
 href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TransitionGuide/Bars.html#//apple_ref/doc/uid/TP40013174-CH8-SW2">iOS’
 Status Bar</a>). In principle, platforms could take advantage of this simplified
-window management mechanism to ensure safety: since there is (or, should be) no
+window management mechanism to improve safety: since there is (or, should be) no
 situation in which application <var>A</var> would draw its views above (higher
 in Z-order than) a view from application <var>B</var>, the platform could have
 an easier time ensuring that the person’s interaction with the focused
 application <var>B</var> is determined solely by <var>B</var>, without
 disruption from <var>A</var>.</p>
 
-<p>TODO: Discuss this more acute attack scenario:
-http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/</p>
+<p>However, sometimes it happens that application <var>A</var> can, in fact,
+show its views above those of <var>B</var>. For example, on the Android
+platform, a <a
+href="http://developer.android.com/guide/topics/ui/notifiers/toasts.html"><code>Toast</code>
+notifications</a> that <var>A</var> creates can persist on the screen while the
+person believes that they are interacting with <var>B</var>. This can lead to a
+state of vulnerability or error, if <var>A</var> <a
+href="http://developer.android.com/guide/topics/ui/notifiers/toasts.html#CustomToastView">crafts
+a custom <code>View</code></a> that obscures or subverts the message that
+<var>B</var> is trying to communicate to the person.</p>
 
+<p>A concrete example of this vulnerability is known to exist. A ransomware
+called <a
+href="http://www.welivesecurity.com/2015/09/10/aggressive-android-ransomware-spreading-in-the-usa/">Android/Lockerpin.A</a>
+used a carefully crafted <code>Toast</code> to obscure the true Android Device
+Administrator permission request dialog. The ransomware’s <code>Toast</code>
+looks like an urgent ‘patch your device now by clicking here’ message. When the
+person taps a fake button in the <code>Toast</code>, their tap passes through to
+the OK button in the Device Administrator permission:</p>
+
+<blockquote>…the Trojan obtains Device Administrator rights much more covertly.
+The activation window is overlaid with the Trojan’s malicious window pretending
+to be an “Update patch installation”. As the victims click through this
+innocuous-looking installation they also unknowingly activate the Device
+Administrator privileges in the hidden underlying window.</blockquote>
+
+<!--
 <blockquote>the app first tricks inexperienced users into granting it device
 administrator privileges. To achieve this, it overlays a bogus patch
 installation window on top of an activation notice. When targets click on the
 continue button, they really grant the malicious app elevated rights that allow
-it to make changes to the Android settings.</blockquote>
+it to make changes to the Android settings.
+— <a
+href="http://arstechnica.com/security/2015/09/new-android-ransomware-locks-out-victims-by-changing-lock-screen-pin/">Ars Technica</a></blockquote>
+-->
 
-<p>The person’s tap gesture passes through the overlay and into the real Device
-Administrator elevation request. It might have been possible to prevent this
-using the <code>filterTouchesWhenObscured</code> attribute of Android Views:
-https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/view/SecureView.java
-TODO get a canonical link for that</p>
+<p>It might have been possible to prevent this using the <a
+href="https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/view/SecureView.java"><code>filterTouchesWhenObscured</code>
+attribute of Android Views</a>. The true Device Administrator dialog should use
+the attribute to ensure that it only receives taps when it is not obscured by
+another applications <code>Toast</code> or any other <code>View</code>.</p>
+
+<!-- TODO get a canonical link for filterTouchesWhenObscured -->
+
+<p>TODO: Talk about how it’s patched</p>
+
+<p>It would be better if application developers did not have to remember to
+filter gesture events when their application’s views do not have the highest
+Z-order. One way to do that is for the platform to enforce that only 1
+application can have views on the screen at any 1 time.</p>
 
 <h2>Example: Origin Security Indicators</h2>
 
