@@ -97,8 +97,48 @@ hence the fewest human-machine state mismatches that lead to vulnerability.</p>
 href="http://projecteuclid.org/download/pdf_1/euclid.aoms/1177699147">Hidden
 Markov models</a></p>
 
+<h3>Ceremony Design And Analysis</h3>
+
 <p><a href="https://eprint.iacr.org/2007/399.pdf"><em>Ceremony Design And
 Analysis</em></a> by Carl Ellison</p>
+
+<blockquote>
+
+<p>…the design process for a ceremony is the same as the process for a network
+protocol. Each node in the ceremony has:</p>
+
+<ol>
+<li>state, held in the node’s memory in one or more locations
+<li>secrets, protected by tamper resistance and subject to access control
+<li>a state machine
+<li>input messages that are parsed and sometimes pre-processed, including
+  <ol>
+  <li>messages from other nodes
+  <li>events (like a timer or, within a human node, a “desire”)
+  </ol>
+<li>for each (input message, state) pair:
+  <ol>
+  <li>output messages
+  <li>changes in state
+  </ol>
+<li>service response times and communication bandwidth
+<li>probability of processing errors
+<li>probability of node death or loss of memory
+</ol>
+
+<p>State machines need to be specified for every node in the ceremony. One of
+the nodes will, from its home state or from some external event (like a timer or
+a desire), initiate a message cascade. As with protocols, we can look for
+unrealizable conditions (a reply that is generated before the message that
+initiates it), deadlock (nodes waiting for messages from each other), race
+conditions, etc. We can do normal performance analyses. We can analyze a
+ceremony for fault/disaster tolerance. We can do normal security analyses of the
+ceremony and of secrets stored in each node’s memory. We can run simulations and
+evaluate them against a set of expectations. We can do formal modeling and
+attempt to prove properties of the modeled ceremony. All of the techniques that
+we use for network protocol design should be available for ceremony design.</p>
+
+</blockquote>
 
 <p>TODO. Adrienne sent more good ones.</p>
 
